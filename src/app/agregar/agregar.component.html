@@ -1,0 +1,98 @@
+<div class="container mt-5 p-5">
+  <div class="card">
+    <div class="modal-header">
+      <h5 class="modal-title">Agregar pelicula</h5>
+    </div>
+    <form [formGroup]="formRegistrar" (ngSubmit)="onSubmit()">
+      <div class="card-body">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nombre pelicula</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="nombre_pelicula"
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Duracion</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="duracion"
+            />
+          </div>
+
+          <div class="form-group">
+            <label>Trailer</label>
+            <input type="text" class="form-control" formControlName="trailer" />
+          </div>
+
+          <div class="form-group">
+            <label>Idioma</label>
+            <select formControlName="fk_idioma" class="form-select">
+              <option
+                *ngFor="let idioma of idiomas; let i = index"
+                [value]="idiomas[i].id_idioma"
+              >
+                {{ idiomas[i].idioma }}
+              </option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>clasificacion</label>
+            <select formControlName="fk_clasificacion" class="form-select">
+              <option
+                *ngFor="let clasificacion of clasificaciones; let i = index"
+                [value]="clasificaciones[i].id_clasificacion"
+              >
+                {{ clasificaciones[i].clasificacion }}
+              </option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Director</label>
+            <select formControlName="fk_director_pelicula" class="form-select">
+              <option
+                *ngFor="let director of directores; let i = index"
+                [value]="directores[i].id_director"
+              >
+                {{ directores[i].director }}
+              </option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Reparto</label>
+            <select formControlName="fk_actor_reparto" class="form-select">
+              <option
+                *ngFor="let actor of actores; let i = index"
+                [value]="actores[i].id_reparto"
+              >
+                {{ actores[i].actor }}
+              </option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Sipnosis</label>
+            <textarea
+              formControlName="sipnosis"
+              class="form-control"
+              rows="3"
+            ></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" (click)="volver()" class="btn btn-secondary">
+          Cancelar
+        </button>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+      </div>
+    </form>
+  </div>
+</div>
